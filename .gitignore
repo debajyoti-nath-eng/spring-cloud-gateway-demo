@@ -30,3 +30,14 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+
+### IntelliJ module files ###
+*.iml
+*.ipr
+*.iws
+
+### Gradle ###
+.gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
