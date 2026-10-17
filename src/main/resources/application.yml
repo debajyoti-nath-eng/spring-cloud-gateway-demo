@@ -1,0 +1,21 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: spring-cloud-gateway-demo
+  cloud:
+    gateway:
+      server:
+        webflux:
+          routes:
+            - id: items-service
+              uri: ${ITEMS_SERVICE_URL:http://localhost:8282}
+              predicates:
+                - Path=/api/**
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
