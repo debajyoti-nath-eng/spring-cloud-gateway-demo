@@ -51,3 +51,10 @@ continues to handle API validation and item operations.
 ```shell
 mvn test
 ```
+
+## License
+
+All rights reserved. This repository may be viewed and cloned, but no license
+is granted to use, reproduce, modify, distribute, or create derivative works
+from its contents, except as permitted by applicable law or the GitHub Terms
+of Service. See [LICENSE](LICENSE).
