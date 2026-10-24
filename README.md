@@ -60,7 +60,6 @@ mvn test
 
 ## License
 
-All rights reserved. This repository may be viewed and cloned, but no license
-is granted to use, reproduce, modify, distribute, or create derivative works
-from its contents, except as permitted by applicable law or the GitHub Terms
-of Service. See [LICENSE](LICENSE).
+This project is licensed under the MIT License. See [LICENSE](LICENSE) for
+the full license text. Third-party libraries and tools are subject to their
+respective licenses.

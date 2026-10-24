@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2026 Debajyoti Nath. All rights reserved.
+ * Copyright (c) 2026 Debajyoti Nath. Licensed under the MIT License; see LICENSE.
  */
 package com.example.gateway;
 
