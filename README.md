@@ -2,6 +2,8 @@
 
 A Spring Cloud Gateway application with independently runnable items and orders
 REST services. The gateway forwards each API path to the matching service.
+See [the architecture guide](docs/architecture.md) for component responsibilities,
+request flow, configuration, and current demo limitations.
 
 ## Technology and versions
 
@@ -51,6 +53,17 @@ curl http://localhost:8080/api/orders/1001
 ```
 
 Unknown item and order IDs return `404 Not Found`.
+
+## Project layout
+
+| Module | Responsibility |
+| --- | --- |
+| `gateway/` | Reactive gateway routes, port `8080`, and health endpoint |
+| `items-service/` | Sample items REST API, port `8282` |
+| `orders-service/` | Sample orders REST API, port `8283` |
+
+Each module declares its own application dependencies. The root Maven project
+manages shared versions and aggregates the modules.
 
 ## Test
 

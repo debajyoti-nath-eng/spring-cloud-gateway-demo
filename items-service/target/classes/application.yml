@@ -1,6 +1,8 @@
 server:
+  # Dedicated local port; the gateway routes /api/items/** here by default.
   port: 8282
 
 spring:
   application:
+    # Used in logs and service-level diagnostics.
     name: items-service

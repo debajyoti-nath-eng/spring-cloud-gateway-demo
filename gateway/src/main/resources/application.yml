@@ -9,11 +9,14 @@ spring:
       server:
         webflux:
           routes:
+            # Route each domain path to its independently running REST service.
             - id: items-service
+              # Override for containers or a remote items-service deployment.
               uri: ${ITEMS_SERVICE_URL:http://localhost:8282}
               predicates:
                 - Path=/api/items/**
             - id: orders-service
+              # Override for containers or a remote orders-service deployment.
               uri: ${ORDERS_SERVICE_URL:http://localhost:8283}
               predicates:
                 - Path=/api/orders/**

@@ -1,6 +1,8 @@
 server:
+  # Dedicated local port; the gateway routes /api/orders/** here by default.
   port: 8283
 
 spring:
   application:
+    # Used in logs and service-level diagnostics.
     name: orders-service
