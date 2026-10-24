@@ -1,8 +1,7 @@
 # Spring Cloud Gateway Demo
 
-A reactive API gateway for the Spring Boot REST Demo. Requests to `/api/**`
-are forwarded to the items service, including request headers such as
-`X-Client-Type`.
+A Spring Cloud Gateway application with independently runnable items and orders
+REST services. The gateway forwards each API path to the matching service.
 
 ## Technology and versions
 
@@ -13,18 +12,22 @@ are forwarded to the items service, including request headers such as
 
 ## Run
 
-Start the Spring Boot REST Demo on port `8282`, then start the gateway:
+From the repository root, start each application in a separate terminal:
 
 ```shell
-mvn spring-boot:run
+mvn -pl items-service spring-boot:run
+mvn -pl orders-service spring-boot:run
+mvn -pl gateway spring-boot:run
 ```
 
-The gateway listens on port `8080`. The downstream service defaults to
-`http://localhost:8282`; set `ITEMS_SERVICE_URL` to change it:
+The gateway listens on port `8080`, the items service on `8282`, and the orders
+service on `8283`. Change downstream service URLs with `ITEMS_SERVICE_URL` and
+`ORDERS_SERVICE_URL`:
 
 ```powershell
 $env:ITEMS_SERVICE_URL = "http://localhost:8282"
-mvn spring-boot:run
+$env:ORDERS_SERVICE_URL = "http://localhost:8283"
+mvn -pl gateway spring-boot:run
 ```
 
 ## Routes
@@ -33,18 +36,21 @@ Base URL: `http://localhost:8080`
 
 | Method | Path | Description |
 | --- | --- | --- |
-| `*` | `/api/**` | Forward the request to the items service |
+| `GET` | `/api/items` | List items |
+| `GET` | `/api/items/{id}` | Get an item by ID |
+| `GET` | `/api/orders` | List orders |
+| `GET` | `/api/orders/{id}` | Get an order by ID |
 | `GET` | `/actuator/health` | Check gateway health |
 
-The gateway passes `X-Client-Type` through to the REST service, which requires
-its value to be `UI` or `POSTMAN` for `/api/**` requests. For example:
+The gateway forwards `/api/items/**` to the items service and `/api/orders/**`
+to the orders service. The services return sample in-memory data. For example:
 
 ```shell
-curl -i http://localhost:8080/api/items -H "X-Client-Type: POSTMAN"
+curl http://localhost:8080/api/items
+curl http://localhost:8080/api/orders/1001
 ```
 
-Only the gateway health endpoint is exposed over HTTP; the REST service
-continues to handle API validation and item operations.
+Unknown item and order IDs return `404 Not Found`.
 
 ## Test
 

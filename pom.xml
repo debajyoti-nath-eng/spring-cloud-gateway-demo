@@ -14,13 +14,20 @@
     <groupId>com.example</groupId>
     <artifactId>spring-cloud-gateway-demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
     <name>spring-cloud-gateway-demo</name>
-    <description>Spring Cloud Gateway for the Spring Boot REST Demo</description>
+    <description>Spring Cloud Gateway and downstream Spring Boot REST services</description>
 
     <properties>
         <java.version>21</java.version>
         <spring-cloud.version>2025.0.3</spring-cloud.version>
     </properties>
+
+    <modules>
+        <module>gateway</module>
+        <module>items-service</module>
+        <module>orders-service</module>
+    </modules>
 
     <dependencyManagement>
         <dependencies>
@@ -34,28 +41,4 @@
         </dependencies>
     </dependencyManagement>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-gateway-server-webflux</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
 </project>
